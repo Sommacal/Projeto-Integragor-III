@@ -32,7 +32,7 @@ namespace Zeit
         }
         private async void btnPesquisa_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PesquisaEntrada());
+            await Navigation.PushAsync(new Adicionar_Retirar());
         }
     }
 }

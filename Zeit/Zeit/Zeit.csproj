@@ -16,6 +16,9 @@
     <Compile Update="Views\CadastroDepartamento.xaml.cs">
       <DependentUpon>CadastroDepartamento.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Adicionar_Retirar.xaml.cs">
+      <DependentUpon>Adicionar_Retirar.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -28,7 +31,7 @@
     <EmbeddedResource Update="Views\CadastroProduto.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PesquisaEntrada.xaml">
+    <EmbeddedResource Update="Views\Adicionar_Retirar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
