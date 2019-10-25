@@ -1,0 +1,17 @@
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Debug\netstandard2.0\Zeit.deps.json
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Debug\netstandard2.0\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Debug\netstandard2.0\ref\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Debug\netstandard2.0\Zeit.pdb
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroDepartamento.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroFornecedor.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroProduto.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\PesquisaEntrada.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.AssemblyInfoInputs.cache
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.AssemblyInfo.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\ref\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.pdb
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.csprojAssemblyReference.cache

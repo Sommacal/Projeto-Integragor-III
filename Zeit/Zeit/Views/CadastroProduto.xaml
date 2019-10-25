@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Zeit.CadastroProduto">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="CADASTRO PRODUTO"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                TextColor="DarkCyan"
+                FontSize="Medium"
+                FontAttributes="Bold"/>
+
+            <Entry  x:Name="txtNome"
+                    Placeholder="Nome" />
+            <Entry  x:Name="txtDescricao"
+                    Placeholder="Descrição" />
+            <Entry  x:Name="txtQuantidade"
+                    Placeholder="Quantidade" />                       
+            <Picker x:Name="pckFornecedor"
+                    Title="Selecione o Fornecedor"
+                    ItemDisplayBinding="{Binding nome}"/>            
+            <Picker x:Name="pckDepartamento"
+                    Title="Selecione o Departamento"
+                    ItemDisplayBinding="{Binding nome}"/>            
+            <Label Text="Possui Validade?" />
+            <DatePicker x:Name="dpckValidade"/>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox IsChecked="false"
+                          x:Name="ckbData"/>
+                <Label Text="Não possui data" />
+              
+            </StackLayout>
+            
+            
+            <Button x:Name="btnSalvar"
+                    Text="Salvar"
+                    Clicked="btnSalvar_Clicked"/>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

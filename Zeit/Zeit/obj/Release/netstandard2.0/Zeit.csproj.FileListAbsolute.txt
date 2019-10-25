@@ -1,0 +1,14 @@
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Release\netstandard2.0\Zeit.deps.json
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Release\netstandard2.0\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Release\netstandard2.0\ref\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\bin\Release\netstandard2.0\Zeit.pdb
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\Zeit.csprojAssemblyReference.cache
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\CadastroDepartamento.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\Zeit.AssemblyInfoInputs.cache
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\Zeit.AssemblyInfo.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\ref\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Release\netstandard2.0\Zeit.pdb
