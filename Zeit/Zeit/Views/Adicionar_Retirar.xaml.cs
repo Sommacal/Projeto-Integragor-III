@@ -11,7 +11,6 @@ namespace Zeit
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Adicionar_Retirar : ContentPage
-
     {
         public Adicionar_Retirar()
         {
@@ -20,41 +19,46 @@ namespace Zeit
 
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
-            carregaList(); // CarregandoListView - Evento load Xamarin.Forms
-        }
-        public void carregaList()
-        {
-                ProdutoDAO query = new ProdutoDAO();
-                ltvProdutos.ItemsSource = query.listaProduto();
-                ltvProdutos.Footer = $"Foram encontrados {query.listaProduto().Count} produtos";
+            carregaList(); //CarregandoListView - Evento load Xamarin.Forms
         }
         private void txtNome_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ProdutoDAO p = new ProdutoDAO();     
-            if (p.listaProduto(txtNome.Text.ToString()) != null) //verificação se a lista de objetos referente a consulta com nome não é vazia, caso seja, ira carregar todos items da tabela no else;
+            try
             {
-                ltvProdutos.ItemsSource = p.listaProduto(txtNome.Text.ToString());
-                ltvProdutos.Footer = $"Foram encontrados {p.listaProduto(txtNome.Text.ToString()).Count} produtos";//Exibe a quantidade de itens no footer do list
-            } else {
-                ltvProdutos.ItemsSource = p.listaProduto();
-            }
+                ProdutoDAO p = new ProdutoDAO();
+                if (p.listaProduto(txtNome.Text.ToString()) != null) //verificação se a lista de objetos referente a consulta não é vazia, caso seja, ira carregar todos items da tabela
+                {
+                    ltvProdutos.ItemsSource = p.listaProduto(txtNome.Text.ToString());
+                    ltvProdutos.Footer = $"Foram encontrados {p.listaProduto(txtNome.Text.ToString()).Count} produtos";//Exibe a quantidade de itens no footer do list
+                }
+                else
+                {
+                    ltvProdutos.ItemsSource = p.listaProduto();
+                }
+            }catch (Exception ex)
+            {
+                ltvProdutos.Footer = "Não foram encontrador produtos: "+ex.Message;
+            }           
         }
-
         private async void btnAdicionar_Clicked(object sender, EventArgs e)
         {
             try
             {
                 var button = sender as Button;
-                var produto = button.BindingContext as Produto; // variável que recebe o tipo produto e o contexto (dados) do botão selecionado
-                PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Adicionar", "Cancelar", "Quantidade a inserir", InputType.Number); // Poup up que pega o valor a ser adicionado
+                var produto = button.BindingContext as Produto; //Variável que recebe o tipo produto e o contexto (dados) do botão selecionado            
 
-                if (result.Ok && !String.IsNullOrEmpty(result.Text)) // validação para ser feito insert
+                PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Adicionar", "Cancelar", "Quantidade a inserir", InputType.Number); // Poup up que pega o valor a ser adicionado
+                if (result.Ok && !String.IsNullOrEmpty(result.Text)) 
                 {
                     ProdutoDAO query = new ProdutoDAO();
-                    query.adicionar(produto, Convert.ToInt32(result.Text));
+                    query.adicionar(produto, Convert.ToInt32(result.Text)); //Adicionando quantidade ao produto
+                    EntradaDAO _query = new EntradaDAO();
+                    _query.entrada(getEntrada(produto, Convert.ToInt32(result.Text))); //Adicionando Entrada do Produto
                     await DisplayAlert("Confirmação", "Adição feita com sucesso", "Ok");
-                    carregaList(); //Carregar list após update para renovar conexão e atualizar a lista. (caso não seja feito, ira apresentar erro na hora de procurar um produto)
-                }else if (result.Ok && result.Text.Equals("")){ //Caso não tenha sido inserido nenhum valor e selecionado adicionar
+                    carregaList();
+                }
+                else if (result.Ok && result.Text.Equals(""))
+                {
                     await DisplayAlert("Aviso", "Digite um valor a ser inserido.", "Ok");
                 }
             }catch (Exception ex)
@@ -62,11 +66,44 @@ namespace Zeit
                 await DisplayAlert("Erro", "Erro de banco de dados"+ex.Message, "Ok");
             }
         }
-
-        private void btnRetirada_Clicked(object sender, EventArgs e)
+        private async void btnRetirada_Clicked(object sender, EventArgs e)
         {
-            var button = sender as Button;
-            var produto = button.BindingContext as Produto;
+            try
+            {
+                var button = sender as Button;
+                var produto = button.BindingContext as Produto;
+                PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Retirar", "Cancelar", "Quantidade a retirar", InputType.Number);
+                if (result.Ok && !String.IsNullOrEmpty(result.Text))
+                {
+                    ProdutoDAO query = new ProdutoDAO();
+                    query.retirar(produto, Convert.ToInt32(result.Text));
+                    await DisplayAlert("Confirmação", "Retirada feita com sucesso", "Ok");
+                    carregaList();
+                }
+                else if (result.Ok && result.Text.Equals(""))
+                {
+                    await DisplayAlert("Aviso", "Digite um valor a ser inserido.", "Ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Erro de banco de dados" + ex.Message, "Ok");
+            }
+        }
+        public Entrada getEntrada(Produto produto, int quantidade)
+        {           
+            Entrada entrada = new Entrada();
+            entrada.quantidade = quantidade;           
+            entrada.id_produto = produto.id;
+            entrada.data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd"));
+            entrada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            return entrada;
+        }
+        public void carregaList()
+        {
+            ProdutoDAO query = new ProdutoDAO();
+            ltvProdutos.ItemsSource = query.listaProduto();
+            ltvProdutos.Footer = $"Foram encontrados {query.listaProduto().Count} produtos";
         }
     }
 }

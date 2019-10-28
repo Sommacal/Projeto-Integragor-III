@@ -95,10 +95,16 @@ namespace Zeit
             connection.Close();
         }
 
-        public void retirar()
-        {
-
+        public void retirar(Produto produto, int qtde) {
+            Conexao connection = new Conexao();
+            NpgsqlCommand query = new NpgsqlCommand("UPDATE produto SET quantidade = quantidade - @qtde WHERE id = @id");
+            query.Connection = connection.Open();
+            query.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer).Value = produto.id;
+            query.Parameters.Add("qtde", NpgsqlTypes.NpgsqlDbType.Integer).Value = qtde;
+            query.ExecuteNonQuery();
+            connection.Close();
         }
+      
 
     }
 }

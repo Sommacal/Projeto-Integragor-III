@@ -68,3 +68,13 @@ namespace Zeit
 	);*/
 
 // UPDATE produto SET quantidade = quantidade+ @qtde WHERE id = @id
+
+/*create table entrada(
+    id serial primary key not null,
+	qtde integer,
+    id_produto integer,
+	data date,
+    horario time,
+	foreign key(id_produto) references produto(id)
+    );*/
+
