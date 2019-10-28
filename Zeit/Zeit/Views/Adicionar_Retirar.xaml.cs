@@ -16,15 +16,12 @@ namespace Zeit
         {
             InitializeComponent();                        
         }
-
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
             carregaList(); //CarregandoListView - Evento load Xamarin.Forms
         }
         private void txtNome_TextChanged(object sender, TextChangedEventArgs e)
         {
-            try
-            {
                 ProdutoDAO p = new ProdutoDAO();
                 if (p.listaProduto(txtNome.Text.ToString()) != null) //verificação se a lista de objetos referente a consulta não é vazia, caso seja, ira carregar todos items da tabela
                 {
@@ -33,12 +30,9 @@ namespace Zeit
                 }
                 else
                 {
-                    ltvProdutos.ItemsSource = p.listaProduto();
-                }
-            }catch (Exception ex)
-            {
-                ltvProdutos.Footer = "Não foram encontrador produtos: "+ex.Message;
-            }           
+                    ltvProdutos.ItemsSource = null;
+                    ltvProdutos.Footer = "Não foi encontrado nenhum produto";
+                }         
         }
         private async void btnAdicionar_Clicked(object sender, EventArgs e)
         {
