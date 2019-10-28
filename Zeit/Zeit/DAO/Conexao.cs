@@ -32,7 +32,6 @@ namespace Zeit
             }
             return connection;
         }
-
         public void Close(){
             connection.Close();
        }
@@ -78,3 +77,11 @@ namespace Zeit
 	foreign key(id_produto) references produto(id)
     );*/
 
+/*create table retirada(
+    id serial primary key not null,
+    qtde integer,
+    id_produto integer,
+    data date,
+    horario time,
+    foreign key(id_produto) references produto(id)
+    );*/

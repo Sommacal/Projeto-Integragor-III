@@ -71,6 +71,9 @@ namespace Zeit
                 {
                     ProdutoDAO query = new ProdutoDAO();
                     query.retirar(produto, Convert.ToInt32(result.Text));
+                    RetiradaDAO _query = new RetiradaDAO();
+                    _query.retirada(getRetirada(produto, Convert.ToInt32(result.Text)));
+
                     await DisplayAlert("Confirmação", "Retirada feita com sucesso", "Ok");
                     carregaList();
                 }
@@ -92,6 +95,15 @@ namespace Zeit
             entrada.data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd"));
             entrada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
             return entrada;
+        }
+        public Retirada getRetirada (Produto produto, int quantidade)
+        {
+            Retirada retirada = new Retirada();
+            retirada.quantidade = quantidade;
+            retirada.id_produto = produto.id;
+            retirada.data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd"));
+            retirada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            return retirada;
         }
         public void carregaList()
         {

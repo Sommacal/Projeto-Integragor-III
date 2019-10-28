@@ -7,23 +7,22 @@
              x:Class="Zeit.CadastroDepartamento">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="CADASTRO DEPARTAMENTO"
+            <Label Text="Cadastro Fornecedor"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 TextColor="DarkCyan"
-                FontSize="Medium"
-                FontAttributes="Bold"/>
-            
-            
+                FontSize="Large"
+                FontAttributes="Bold"
+                Visual="Material"/>
             <Entry x:Name="txtNome"
                     Placeholder="Nome" />            
             <Entry x:Name="txtDescricao"
-                    Placeholder="Descrição" />
-                        
+                    Placeholder="Descrição" />                        
             <Button x:Name="btnSalvar"
                     Text="Salvar"
-                    Clicked="btnSalvar_Clicked"/>
-        
+                    Clicked="btnSalvar_Clicked"
+                    Visual="Material" 
+                    BackgroundColor="CadetBlue"/>        
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

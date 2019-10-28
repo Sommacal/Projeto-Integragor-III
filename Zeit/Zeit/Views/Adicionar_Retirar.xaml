@@ -7,15 +7,14 @@
              x:Class="Zeit.Adicionar_Retirar"
              Appearing="ContentPage_Appearing">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pesquisa e Entrada"
+        <StackLayout Visual="Material">
+            <Label Text="Cadastro Fornecedor"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 TextColor="DarkCyan"
-                FontSize="Medium"
-                FontAttributes="Bold"/>
-
-
+                FontSize="Large"
+                FontAttributes="Bold"
+                Visual="Material"/>
             <Entry  x:Name="txtNome"
                     Placeholder="Nome do produto que deseja encontrar"
                     TextChanged="txtNome_TextChanged"/>
@@ -33,10 +32,12 @@
                                 </StackLayout>
                                 <Button x:Name="btnAdicionar"
                                         Text = "Add"
-                                        Clicked="btnAdicionar_Clicked"/>
+                                        Clicked="btnAdicionar_Clicked"
+                                        BackgroundColor="LightGreen"/>
                                 <Button x:Name="btnRetirada"
                                         Text = "Ret."
-                                        Clicked="btnRetirada_Clicked"/>
+                                        Clicked="btnRetirada_Clicked"
+                                        BackgroundColor="LightCoral"/>
                             </StackLayout>
                         </ViewCell>
                    </DataTemplate>

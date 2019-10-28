@@ -10,6 +10,7 @@
     <PackageReference Include="Npgsql" Version="4.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.2.0.709249" />
   </ItemGroup>
 
   <ItemGroup>

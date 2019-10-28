@@ -7,15 +7,15 @@
              x:Class="Zeit.CadastroProduto">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="CADASTRO PRODUTO"
+            <Label Text="Cadastro Produto"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 TextColor="DarkCyan"
-                FontSize="Medium"
-                FontAttributes="Bold"/>
-
+                FontSize="Large"
+                FontAttributes="Bold"
+                Visual="Material"/>
             <Entry  x:Name="txtNome"
-                    Placeholder="Nome" />
+                    Placeholder="Nome"/>
             <Entry  x:Name="txtDescricao"
                     Placeholder="Descrição" />
             <Entry  x:Name="txtQuantidade"
@@ -26,21 +26,19 @@
             <Picker x:Name="pckDepartamento"
                     Title="Selecione o Departamento"
                     ItemDisplayBinding="{Binding nome}"/>            
-            <Label Text="Possui Validade?" />
+            <Label  Text="Possui Validade?"/>
             <DatePicker x:Name="dpckValidade"/>
             <StackLayout Orientation="Horizontal">
-                <CheckBox IsChecked="false"
-                          x:Name="ckbData"/>
-                <Label Text="Não possui data" />
-              
+            <CheckBox IsChecked="false"
+                      x:Name="ckbData"
+                      Color="DarkGray"/>
+            <Label Text="Não possui Validade"/>
             </StackLayout>
-            
-            
             <Button x:Name="btnSalvar"
                     Text="Salvar"
-                    Clicked="btnSalvar_Clicked"/>
-
-            
+                    Clicked="btnSalvar_Clicked"
+                    Visual="Material" 
+                    BackgroundColor="CadetBlue"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -183,6 +183,18 @@
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
         }
+      },
+      "Xamarin.Forms.Visual.Material/4.2.0.709249": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.Forms": "4.2.0.709249"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
       }
     }
   },
@@ -932,6 +944,27 @@
         "xamarin.forms.4.2.0.709249.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
+    },
+    "Xamarin.Forms.Visual.Material/4.2.0.709249": {
+      "sha512": "Vde5rx9LSojqP7rYBoFCfUsKRt+ZT8tfgUkeFEsmiv8Q+13hQz8NiLNHP7+9wJ6dGiNvY3aqwyFist1pjdA+kQ==",
+      "type": "package",
+      "path": "xamarin.forms.visual.material/4.2.0.709249",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid10/Xamarin.Forms.Visual.Material.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoAndroid90/Xamarin.Forms.Material.dll",
+        "lib/MonoAndroid90/Xamarin.Forms.Material.dll.mdb",
+        "lib/MonoAndroid90/Xamarin.Forms.Material.pdb",
+        "lib/Xamarin.iOS10/Xamarin.Forms.Material.dll",
+        "lib/Xamarin.iOS10/Xamarin.Forms.Material.pdb",
+        "lib/netstandard1.0/_._",
+        "lib/tizen40/Xamarin.Forms.Material.dll",
+        "lib/tizen40/Xamarin.Forms.Material.pdb",
+        "xamarin.forms.visual.material.4.2.0.709249.nupkg.sha512",
+        "xamarin.forms.visual.material.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -940,7 +973,8 @@
       "NETStandard.Library >= 2.0.3",
       "Npgsql >= 4.1.1",
       "Xamarin.Essentials >= 1.2.0",
-      "Xamarin.Forms >= 4.2.0.709249"
+      "Xamarin.Forms >= 4.2.0.709249",
+      "Xamarin.Forms.Visual.Material >= 4.2.0.709249"
     ]
   },
   "packageFolders": {
@@ -1006,6 +1040,10 @@
             "version": "[1.2.0, )"
           },
           "Xamarin.Forms": {
+            "target": "Package",
+            "version": "[4.2.0.709249, )"
+          },
+          "Xamarin.Forms.Visual.Material": {
             "target": "Package",
             "version": "[4.2.0.709249, )"
           }

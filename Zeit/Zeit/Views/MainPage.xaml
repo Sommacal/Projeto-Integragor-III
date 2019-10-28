@@ -6,34 +6,41 @@
              mc:Ignorable="d"
              x:Class="Zeit.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
+    <StackLayout VerticalOptions="StartAndExpand">
         <Label Text="ZEIT" 
            HorizontalOptions="Center"
            VerticalOptions="Center" 
            FontSize="Header"
            TextColor="DarkCyan"
-           FontAttributes="Bold"/>
-        
-        
-        <Button x:Name="btnProduto" 
-                Text="Cadastrar Produto"
-                Clicked="btnProduto_Clicked"/>
-        
-        <Button x:Name="btnFornecedor"
-                Text="Cadastrar Fornecedor"
-                Clicked="btnFornecedor_Clicked"/>
-        
-        <Button x:Name="btnDepartamento" 
-                Text="Cadastrar Departamento"
-                Clicked="btnDepartamento_Clicked"/>
-        
-        <Button x:Name="btnPesquisa"
-                Text="Cadastrar Pesquisa/Entrada"
-                Clicked="btnPesquisa_Clicked"/>
-        
-        <Button Text="Retirada"/>
-
+           FontAttributes="Bold"
+           Visual="Material"/>
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Button x:Name="btnProduto" 
+                     Text="Cad. Produto"
+                     Clicked="btnProduto_Clicked"
+                     HorizontalOptions="StartAndExpand"
+                     WidthRequest="190"
+                     HeightRequest="100"/>
+            <Button  x:Name="btnFornecedor"
+                     Text="Cad. Fornecedor"
+                     Clicked="btnFornecedor_Clicked" 
+                     HorizontalOptions="EndAndExpand"
+                     WidthRequest="190"
+                     HeightRequest="100"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Button x:Name="btnDepartamento" 
+                    Text="Cadastrar Depto."
+                    Clicked="btnDepartamento_Clicked" 
+                    HorizontalOptions="StartAndExpand"
+                    WidthRequest="190"
+                    HeightRequest="100"/>
+            <Button x:Name="btnPesquisa"
+                    Text="Ent./Ret."
+                    Clicked="btnPesquisa_Clicked" 
+                    HorizontalOptions="EndAndExpand"
+                    WidthRequest="190"
+                    HeightRequest="100"/>
+        </StackLayout>
     </StackLayout>
-
 </ContentPage>

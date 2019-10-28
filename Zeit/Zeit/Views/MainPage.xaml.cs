@@ -15,8 +15,7 @@ namespace Zeit
     {
         public MainPage()
         {
-            InitializeComponent();          
-
+            InitializeComponent();
         }
         private async void btnDepartamento_Clicked(object sender, EventArgs e)
         {
