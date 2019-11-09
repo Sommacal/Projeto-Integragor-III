@@ -31,35 +31,45 @@ namespace Zeit
 
         public List<Produto> listaProduto()
         {
-            Conexao connection = new Conexao();
-            NpgsqlCommand query = new NpgsqlCommand("select id, nome, descricao, quantidade, id_fornecedor, id_departamento from produto");
-            query.Connection = connection.Open();
-            using (NpgsqlDataReader rs = query.ExecuteReader())
-                if (rs.HasRows)
-                {
-                    List<Produto> produtos = new List<Produto>();
-                    while (rs.Read())
+
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select id, nome, descricao, quantidade, id_fornecedor, id_departamento from produto order by nome");
+                query.Connection = connection.Open();
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
                     {
-                        Produto p = new Produto();
-                        p.id = rs.GetInt32(0);
-                        p.nome = rs.GetString(1);
-                        p.descricao = rs.GetString(2);
-                        p.quantidade = rs.GetInt32(3);
-                        p.id_fornecedor = rs.GetInt32(4);
-                        p.id_departamento = rs.GetInt32(5);
-                        produtos.Add(p);
+                        List<Produto> produtos = new List<Produto>();
+                        while (rs.Read())
+                        {
+                            Produto p = new Produto();
+                            p.id = rs.GetInt32(0);
+                            p.nome = rs.GetString(1);
+                            p.descricao = rs.GetString(2);
+                            p.quantidade = rs.GetInt32(3);
+                            p.id_fornecedor = rs.GetInt32(4);
+                            p.id_departamento = rs.GetInt32(5);
+                            produtos.Add(p);
+                        }
+                        connection.Close();
+                        return produtos;
                     }
-                    connection.Close();
-                    return produtos;
-                }
-            connection.Close();
-            return null;
+                connection.Close();
+                return null;
+
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Erro de conexão" + ex.Message);
+                return null;
+            }
+            
         }
 
         public List<Produto> listaProduto(string nome)
         {
             Conexao connection = new Conexao();
-            NpgsqlCommand query = new NpgsqlCommand("select id, nome, descricao, quantidade, id_fornecedor, id_departamento from produto where nome LIKE @nome");
+            NpgsqlCommand query = new NpgsqlCommand("select id, nome, descricao, quantidade, id_fornecedor, id_departamento from produto where nome LIKE @nome order by nome");
             query.Connection = connection.Open();
             query.Parameters.Add("nome", NpgsqlTypes.NpgsqlDbType.Varchar).Value = "%" + nome + "%";
             using (NpgsqlDataReader rs = query.ExecuteReader())

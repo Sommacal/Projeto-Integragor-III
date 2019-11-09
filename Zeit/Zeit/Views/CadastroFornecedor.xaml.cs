@@ -15,6 +15,7 @@ namespace Zeit
         public CadastroFornecedor()
         {
             InitializeComponent();
+            this.Title = "Cadastrar Fornecedor";
         }
 
         public void limpar()

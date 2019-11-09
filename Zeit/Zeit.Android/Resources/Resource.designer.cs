@@ -8472,17 +8472,26 @@ namespace Zeit.Droid
 			// aapt resource value: 0x7F070077
 			public const int notify_panel_notification_icon_bg = 2131165303;
 			
+			// aapt resource value: 0x7F07007B
+			public const int roundedbg = 2131165307;
+			
+			// aapt resource value: 0x7F07007C
+			public const int roundedbgdark = 2131165308;
+			
 			// aapt resource value: 0x7F070078
-			public const int roundedbg = 2131165304;
+			public const int round_add_black_18dp = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int roundedbgdark = 2131165305;
+			public const int round_create_black_18dp = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int tooltip_frame_dark = 2131165306;
+			public const int round_remove_black_18dp = 2131165306;
 			
-			// aapt resource value: 0x7F07007B
-			public const int tooltip_frame_light = 2131165307;
+			// aapt resource value: 0x7F07007D
+			public const int tooltip_frame_dark = 2131165309;
+			
+			// aapt resource value: 0x7F07007E
+			public const int tooltip_frame_light = 2131165310;
 			
 			static Drawable()
 			{

@@ -6,43 +6,50 @@
              mc:Ignorable="d"
              x:Class="Zeit.Adicionar_Retirar"
              Appearing="ContentPage_Appearing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnAdd" 
+                     Text="ADD. PRODUTO"                    
+                     Clicked="btnAdd_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Visual="Material">
-            <Label Text="Cadastro Fornecedor"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                TextColor="DarkCyan"
-                FontSize="Large"
-                FontAttributes="Bold"
-                Visual="Material"/>
+        <StackLayout>
             <Entry  x:Name="txtNome"
                     Placeholder="Nome do produto que deseja encontrar"
-                    TextChanged="txtNome_TextChanged"/>
+                    TextChanged="txtNome_TextChanged"
+                    BackgroundColor="Transparent"
+                    Visual="Material"/>
             <ListView x:Name="ltvProdutos"
                       Header="Produtos em estoque">
-               <ListView.ItemTemplate>
+                <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding nome}"/>
+                                    <Label Text="{Binding nome}" WidthRequest="150"/>
                                 </StackLayout>
                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                    <Label Text="{Binding quantidade}"/>
+                                    <Label Text="{Binding quantidade}" WidthRequest="50"/>
                                 </StackLayout>
                                 <Button x:Name="btnAdicionar"
-                                        Text = "Add"
+                                        ImageSource="round_add_black_18dp.png"
                                         Clicked="btnAdicionar_Clicked"
-                                        BackgroundColor="LightGreen"/>
+                                        WidthRequest="40"
+                                        BackgroundColor="Transparent"/>
                                 <Button x:Name="btnRetirada"
-                                        Text = "Ret."
+                                        ImageSource="round_remove_black_18dp.png"
+                                        WidthRequest="40"
                                         Clicked="btnRetirada_Clicked"
-                                        BackgroundColor="LightCoral"/>
+                                        BackgroundColor="Transparent"/>
+                                <Button x:Name="btnEditar"
+                                        WidthRequest="70"
+                                        Text="Edit"
+                                        Clicked="btnEditar_Clicked"
+                                        BackgroundColor="Transparent"/>
                             </StackLayout>
                         </ViewCell>
-                   </DataTemplate>
-               </ListView.ItemTemplate>
-           </ListView>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

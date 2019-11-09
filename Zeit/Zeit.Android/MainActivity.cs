@@ -22,6 +22,7 @@ namespace Zeit.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            //INICIALIZAR PACOTE NUGET MATERIAL DESIGN
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
             LoadApplication(new App());
             UserDialogs.Init(this);

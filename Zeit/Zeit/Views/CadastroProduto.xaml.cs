@@ -17,6 +17,7 @@ namespace Zeit
         {
             InitializeComponent();
             loadPicker();
+            this.Title = "Cadastrar Produto";
         }  
         private void btnSalvar_Clicked(object sender, EventArgs e)
         {

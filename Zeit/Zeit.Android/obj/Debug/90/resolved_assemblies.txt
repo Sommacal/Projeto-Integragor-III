@@ -3,10 +3,14 @@ C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\asset
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\AndHUD.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\FormsViewGroup.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Java.Interop.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Microcharts.Forms.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Mono.Android.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\mscorlib.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Npgsql.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\SkiaSharp.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\SkiaSharp.Views.Android.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\SkiaSharp.Views.Forms.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Buffers.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Collections.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Core.dll
@@ -67,6 +71,9 @@ C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\asset
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Xamarin.Forms.Platform.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Xamarin.Forms.Xaml.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\Zeit.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.ValueTuple.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Runtime.Extensions.dll
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Linq.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\netstandard.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Data.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit.Android\obj\Debug\90\android\assets\System.Transactions.dll

@@ -7,13 +7,6 @@
              x:Class="Zeit.CadastroFornecedor">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Cadastro Fornecedor"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                TextColor="DarkCyan"
-                FontSize="Large"
-                FontAttributes="Bold"
-                Visual="Material"/>
             <Entry x:Name="txtNome"
                    Placeholder="Nome" />
             <Entry x:Name="txtCpnj"
@@ -28,7 +21,7 @@
                     Text="Salvar"
                     Clicked="btnSalvar_Clicked"
                     Visual="Material" 
-                    BackgroundColor="CadetBlue"/>
+                    BackgroundColor="SteelBlue"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,44 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              mc:Ignorable="d"
              x:Class="Zeit.MainPage">
 
-    <StackLayout VerticalOptions="StartAndExpand">
-        <Label Text="ZEIT" 
-           HorizontalOptions="Center"
-           VerticalOptions="Center" 
-           FontSize="Header"
-           TextColor="DarkCyan"
-           FontAttributes="Bold"
-           Visual="Material"/>
-        <StackLayout Orientation="Horizontal" Padding="10">
-            <Button x:Name="btnProduto" 
-                     Text="Cad. Produto"
-                     Clicked="btnProduto_Clicked"
-                     HorizontalOptions="StartAndExpand"
-                     WidthRequest="190"
-                     HeightRequest="100"/>
-            <Button  x:Name="btnFornecedor"
-                     Text="Cad. Fornecedor"
-                     Clicked="btnFornecedor_Clicked" 
-                     HorizontalOptions="EndAndExpand"
-                     WidthRequest="190"
-                     HeightRequest="100"/>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="10">
-            <Button x:Name="btnDepartamento" 
-                    Text="Cadastrar Depto."
-                    Clicked="btnDepartamento_Clicked" 
-                    HorizontalOptions="StartAndExpand"
-                    WidthRequest="190"
-                    HeightRequest="100"/>
-            <Button x:Name="btnPesquisa"
-                    Text="Ent./Ret."
-                    Clicked="btnPesquisa_Clicked" 
-                    HorizontalOptions="EndAndExpand"
-                    WidthRequest="190"
-                    HeightRequest="100"/>
-        </StackLayout>
+    <StackLayout VerticalOptions="Start">
+        <Label Visual="Material"
+                       Text="Relatórios de controle" 
+                       HorizontalOptions="Center"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       TextColor="SteelBlue"
+                       Margin="15"/>
+        <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="SteelBlue"/>
+        <ScrollView Padding="10" Margin="10">
+            <StackLayout>               
+                <forms:ChartView x:Name="produtos"/>
+                <forms:ChartView x:Name="entradas"/>
+                <forms:ChartView x:Name="saidas"/>
+            </StackLayout>    
+        </ScrollView>
+        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal" Padding="10">
+            <StackLayout Orientation="Horizontal" >
+                <Button x:Name="btnPesquisa"
+                        Text="Produtos"
+                        TextColor="White"
+                        Clicked="btnPesquisa_Clicked"
+                        BackgroundColor="SteelBlue"
+                        HeightRequest="80"
+                        WidthRequest="160"/>
+                <Button x:Name="btnFornecedor"
+                        Text="Cadastrar Fornecedor"
+                        TextColor="White"
+                        Clicked="btnFornecedor_Clicked"
+                        BackgroundColor="SteelBlue"
+                        HeightRequest="80"
+                        WidthRequest="160"/>
+                <Button x:Name="btnDepartamento" 
+                        Text="Cadastrar Depto."
+                        TextColor="White"
+                        Clicked="btnDepartamento_Clicked"
+                        BackgroundColor="SteelBlue"
+                        HeightRequest="80"
+                        WidthRequest="160"
+                        Visual="Material"/>
+            </StackLayout>
+        </ScrollView>
     </StackLayout>
 </ContentPage>

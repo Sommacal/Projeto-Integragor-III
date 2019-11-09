@@ -10,6 +10,7 @@
       "Zeit/1.0.0": {
         "dependencies": {
           "Acr.UserDialogs": "7.0.0",
+          "Microcharts.Forms": "0.6.2",
           "NETStandard.Library": "2.0.3",
           "Npgsql": "4.1.1",
           "Xamarin.Essentials": "1.2.0",
@@ -25,6 +26,17 @@
           "lib/netstandard2.0/Acr.UserDialogs.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microcharts.Forms/0.6.2": {
+        "dependencies": {
+          "SkiaSharp.Views.Forms": "1.59.1"
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wpa81+wp8/Microcharts.Forms.dll": {
+            "assemblyVersion": "1.0.6436.42762",
+            "fileVersion": "1.0.6436.42762"
           }
         }
       },
@@ -57,6 +69,26 @@
           "lib/netstandard2.0/Npgsql.dll": {
             "assemblyVersion": "4.1.1.0",
             "fileVersion": "4.1.1.0"
+          }
+        }
+      },
+      "SkiaSharp/1.59.1": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.1.0"
+          }
+        }
+      },
+      "SkiaSharp.Views.Forms/1.59.1": {
+        "dependencies": {
+          "SkiaSharp": "1.59.1",
+          "Xamarin.Forms": "4.2.0.709249"
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {
+            "assemblyVersion": "1.59.0.0",
+            "fileVersion": "1.59.1.0"
           }
         }
       },
@@ -184,6 +216,13 @@
       "path": "acr.userdialogs/7.0.0",
       "hashPath": "acr.userdialogs.7.0.0.nupkg.sha512"
     },
+    "Microcharts.Forms/0.6.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZM5nmSj7NocE3R2hXyob+dqGOQMt9/1MxPV8I3aU6/cvAK4M16zkFkzYLdrGzQCewfEjw/OTs8RULRTXQcn3Ow==",
+      "path": "microcharts.forms/0.6.2",
+      "hashPath": "microcharts.forms.0.6.2.nupkg.sha512"
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -211,6 +250,20 @@
       "sha512": "sha512-VvYSduwCVCy1erIntV3jVbBduAL8+hqobg8xf5xPmkqzGJ5j9Wx4y/eXz2+BLmFkozJEjTzxz8/X5cOyJ4P9Ig==",
       "path": "npgsql/4.1.1",
       "hashPath": "npgsql.4.1.1.nupkg.sha512"
+    },
+    "SkiaSharp/1.59.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
+      "path": "skiasharp/1.59.1",
+      "hashPath": "skiasharp.1.59.1.nupkg.sha512"
+    },
+    "SkiaSharp.Views.Forms/1.59.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oJB/Hgk1TghpMuuXhUZKmQ3rOU/l4RleYsgNd0EvrNmDahdr/PPhJ30rFH0OjdIsuf5T2hrRdAn55zdb7yMg2w==",
+      "path": "skiasharp.views.forms/1.59.1",
+      "hashPath": "skiasharp.views.forms.1.59.1.nupkg.sha512"
     },
     "System.Buffers/4.5.0": {
       "type": "package",

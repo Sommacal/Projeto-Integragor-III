@@ -15,6 +15,7 @@ namespace Zeit
         public CadastroDepartamento()
         {
             InitializeComponent();
+            this.Title = "Cadastrar Departamento";
         }
         public void limpar()
         {

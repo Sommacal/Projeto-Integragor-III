@@ -85,3 +85,10 @@ namespace Zeit
     horario time,
     foreign key(id_produto) references produto(id)
     );*/
+
+
+/*SELECT ULTIMAS ENTRADAS
+ * select produto.nome, entrada.quantidade 
+from entrada join produto on id_produto = produto.id
+order by data desc
+limit 3*/
