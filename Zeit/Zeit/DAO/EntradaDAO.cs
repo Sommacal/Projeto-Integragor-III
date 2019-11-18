@@ -26,37 +26,6 @@ namespace Zeit
                 throw new Exception("Ocorreu um erro ao inserir: " + ex.Message);
             }            
         }            
-        public List<Microcharts.Entry> Relatorio1()
-        {
-            try
-            {
-                Conexao connection = new Conexao();
-                NpgsqlCommand query = new NpgsqlCommand("select entrada.quantidade, produto.nome from entrada join produto on entrada.id_produto = produto.id order by entrada.quantidade desc limit 5");
-                query.Connection = connection.Open();
-                using (NpgsqlDataReader rs = query.ExecuteReader())
-                    if (rs.HasRows)
-                    {
-                        List<Microcharts.Entry> relatorio = new List<Microcharts.Entry>();
-                        Random rnd = new Random();
-                        while (rs.Read())
-                        {
-                            Microcharts.Entry m = new Microcharts.Entry(rs.GetInt32(0));
-                            m.ValueLabel = Convert.ToString(rs.GetInt32(0));
-                            m.Label = rs.GetString(1);
-                            m.Color = SkiaSharp.SKColor.Parse(String.Format("#{0:X6}", rnd.Next(0x1000000)));
-                            relatorio.Add(m);
-                        }
-                        connection.Close();
-                        return relatorio;
-                    }
-                connection.Close();
-                return null;
-            }
-             catch (Exception ex)
-            {
-                throw new Exception("Erro ao carregar relatório: " + ex.Message);
-            }
-        }
         public List<Entrada> GetAll()
         {
             try
@@ -87,6 +56,40 @@ namespace Zeit
             catch (Exception ex)
             {
                 throw new Exception("Erro de banco de dados: "+ex.Message);
+            }
+        }
+
+        public List<Entrada> GetLastFive()
+        {
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select entrada.quantidade, entrada.data, entrada.horario, produto.nome, usuario.nome from entrada join produto on entrada.id_produto = produto.id join usuario on entrada.cpf_usuario = usuario.cpf order by entrada.id desc limit 5");
+                query.Connection = connection.Open();
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
+                    {
+                        List<Entrada> lastfive = new List<Entrada>();
+                        Random rnd = new Random();
+                        while (rs.Read())
+                        {
+                            Entrada e = new Entrada();
+                            e.quantidade = rs.GetInt32(0);
+                            e.data = rs.GetDateTime(1);
+                            e.horario = rs.GetTimeSpan(2);
+                            e.nome_produto = rs.GetString(3);
+                            e.nome_usuario = rs.GetString(4);
+                            lastfive.Add(e);
+                        }
+                        connection.Close();
+                        return lastfive;
+                    }
+                connection.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro de banco de dados: " + ex.Message);
             }
         }
     }

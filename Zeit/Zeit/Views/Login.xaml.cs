@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace Zeit
 {
@@ -16,7 +13,6 @@ namespace Zeit
         public Login()
         {
             InitializeComponent();
-
         }
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
@@ -31,7 +27,13 @@ namespace Zeit
                     {
                         if (usuario.ValidarLogin(txtCpf.Text.ToString(), txtSenha.Text.ToString()))
                         {
-                            Application.Current.MainPage = new NavigationPage(new MainPage(txtCpf.Text.ToString()));
+                            
+                            using (var dialog = UserDialogs.Instance.Loading($"Bem vindo {usuario.GetByID(txtCpf.Text.ToString())}\n Estamos preparando tudo para você !", null, null, true, MaskType.Gradient))
+                            {
+                                await Task.Delay(4000);
+                                Application.Current.MainPage = new NavigationPage(new MainPage(txtCpf.Text.ToString()));
+                            }
+                                                       
                         }
                         else
                         {
@@ -44,9 +46,7 @@ namespace Zeit
             }catch(Exception ex)
             {
                 await DisplayAlert("Erro", "Erro ao se conectar: "+ex.Message, "Ok");
-            }
-            
-
+            }   
         }
     }
 }

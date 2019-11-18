@@ -218,6 +218,71 @@ namespace Zeit
             }
         }
 
+        public List<Microcharts.Entry> Relatorio1()
+        {
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select quantidade, nome from produto order by quantidade desc limit 4");
+                query.Connection = connection.Open();
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
+                    {
+                        List<Microcharts.Entry> relatorio = new List<Microcharts.Entry>();
+                        Random rnd = new Random();
+                        while (rs.Read())
+                        {
+                            Microcharts.Entry m = new Microcharts.Entry(rs.GetInt32(0));
+                            m.ValueLabel = Convert.ToString(rs.GetInt32(0));
+                            m.Label = rs.GetString(1);
+                            m.Color = SkiaSharp.SKColor.Parse(String.Format("#{0:X6}", rnd.Next(0x1000000)));
+                            relatorio.Add(m);
+                        }
+                        connection.Close();
+                        return relatorio;
+                    }
+                connection.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao carregar relatório: " + ex.Message);
+            }
+        }
+
+        public List<Microcharts.Entry> Relatorio2()
+        {
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select quantidade, nome from produto order by quantidade asc limit 4");
+                query.Connection = connection.Open();
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
+                    {
+                        List<Microcharts.Entry> relatorio = new List<Microcharts.Entry>();
+                        Random rnd = new Random();
+                        while (rs.Read())
+                        {
+                            Microcharts.Entry m = new Microcharts.Entry(rs.GetInt32(0));
+                            m.ValueLabel = Convert.ToString(rs.GetInt32(0));
+                            m.Label = rs.GetString(1);
+                            m.Color = SkiaSharp.SKColor.Parse(String.Format("#{0:X6}", rnd.Next(0x1000000)));
+                            relatorio.Add(m);
+                        }
+                        connection.Close();
+                        return relatorio;
+                    }
+                connection.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao carregar relatório: " + ex.Message);
+            }
+        }
+
+
     }
 }
 

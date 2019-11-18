@@ -10,6 +10,8 @@ namespace Zeit
             public DateTime data { get; set; }
             public TimeSpan horario { get; set; }
             public string cpf_usuario { get; set; }
+            public string nome_produto { get; set; }
+            public string nome_usuario { get; set; }
       
     }
 }

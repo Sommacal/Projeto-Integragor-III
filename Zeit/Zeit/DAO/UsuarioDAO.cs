@@ -7,7 +7,7 @@ namespace Zeit
 {
    public class UsuarioDAO
     {
-        public bool ValidarLogin(String cpf, String senha)
+        public bool ValidarLogin(string cpf, string senha)
         {
             Conexao conn = new Conexao();
             NpgsqlCommand query = new NpgsqlCommand("select cpf, senha from usuario where cpf = @cpf and senha = @senha");
@@ -29,6 +29,33 @@ namespace Zeit
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+        public string GetByID(string Cpf)
+        {
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select nome FROM usuario WHERE cpf=@cpf");
+                query.Connection = connection.Open();
+                query.Parameters.Add("cpf", NpgsqlTypes.NpgsqlDbType.Varchar).Value = Cpf;
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
+                    {
+                        string nome = string.Empty;
+                        while (rs.Read())
+                        {
+                            nome = rs.GetString(0);
+                        }
+                        connection.Close();
+                        return nome;
+                    }
+                connection.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro de banco de dados" + ex.Message);
             }
         }
     }

@@ -25,37 +25,6 @@ namespace Zeit
                 throw new Exception("Erro ao inserir" + ex.Message);
             }            
         }
-        public List<Microcharts.Entry> Relatorio1()
-        {
-            try
-            {
-                Conexao connection = new Conexao();
-                NpgsqlCommand query = new NpgsqlCommand("select retirada.quantidade, produto.nome from retirada join produto on retirada.id_produto = produto.id order by retirada.quantidade desc limit 5");
-                query.Connection = connection.Open();
-                using (NpgsqlDataReader rs = query.ExecuteReader())
-                    if (rs.HasRows)
-                    {
-                        List<Microcharts.Entry> relatorio = new List<Microcharts.Entry>();
-                        Random rnd = new Random();
-                        while (rs.Read())
-                        {
-                            Microcharts.Entry m = new Microcharts.Entry(rs.GetInt32(0));
-                            m.ValueLabel = Convert.ToString(rs.GetInt32(0));
-                            m.Label = rs.GetString(1);
-                            m.Color = SkiaSharp.SKColor.Parse(String.Format("#{0:X6}", rnd.Next(0x1000000)));
-                            relatorio.Add(m);
-                        }
-                        connection.Close();
-                        return relatorio;
-                    }
-                connection.Close();
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Erro ao carregar relatório: " + ex.Message);
-            }
-        }
         public List<Retirada> GetAll()
         {
             try
@@ -79,6 +48,39 @@ namespace Zeit
                         }
                         connection.Close();
                         return retiradas;
+                    }
+                connection.Close();
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro de banco de dados" + ex.Message);
+            }
+        }
+        public List<Retirada> GetLastFive()
+        {
+            try
+            {
+                Conexao connection = new Conexao();
+                NpgsqlCommand query = new NpgsqlCommand("select retirada.quantidade, retirada.data, retirada.horario, produto.nome, usuario.nome from retirada join produto on retirada.id_produto = produto.id join usuario on retirada.cpf_usuario = usuario.cpf order by retirada.id desc limit 5");
+                query.Connection = connection.Open();
+                using (NpgsqlDataReader rs = query.ExecuteReader())
+                    if (rs.HasRows)
+                    {
+                        List<Retirada> lastfive = new List<Retirada>();
+                        Random rnd = new Random();
+                        while (rs.Read())
+                        {
+                            Retirada r = new Retirada();
+                            r.quantidade = rs.GetInt32(0);
+                            r.data = rs.GetDateTime(1);
+                            r.horario = rs.GetTimeSpan(2);
+                            r.nome_produto = rs.GetString(3);
+                            r.nome_usuario = rs.GetString(4);
+                            lastfive.Add(r);
+                        }
+                        connection.Close();
+                        return lastfive;
                     }
                 connection.Close();
                 return null;

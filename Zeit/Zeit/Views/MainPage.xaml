@@ -16,9 +16,9 @@
                        FontSize="Large"
                        FontAttributes="Bold"
                        TextColor="SteelBlue"
-                       Margin="15"/>
+                       Margin="10"/>
             <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="SteelBlue"/>
-            <ScrollView Padding="10" Margin="10" Orientation="Vertical">            
+            <ScrollView Padding="10" Margin="10" Orientation="Vertical" Visual="Material">            
             <StackLayout>
                 <!-- CONTADORES -->
                 <Frame BorderColor="LightSteelBlue"
@@ -26,7 +26,7 @@
                         Padding="8"
                         Visual="Material">
                     <StackLayout>
-                        <Label Text="Contadores"/>
+                        <Label Text="Indicadores"/>
                         <BoxView Color="LightSteelBlue"
                                 HeightRequest="2"
                                 HorizontalOptions="Fill" />
@@ -37,35 +37,109 @@
 
                     </StackLayout>
                 </Frame>
-                <!--RELATORIO DE ENTRADAS-->
+                <!--RELATÓRIO DAS ULTIMAS 5 ENTRADAS CORRETO-->
+                  <Frame BorderColor="LightSteelBlue"
+                        CornerRadius="5"
+                        Padding="8"
+                        Visual="Material">
+                    <StackLayout>
+                        <Label Text="Últimas 5 Entradas"/>
+                        <BoxView Color="LightSteelBlue"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                            <ListView x:Name="ltvEntradas" HeightRequest="230">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout>
+                                                    <Label Text="{Binding nome_produto}" WidthRequest="120" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding quantidade}" WidthRequest="20" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding data, StringFormat='{0:dd/MM/yy}'}" WidthRequest="70" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding horario, StringFormat='{}{0:hh\\:mm}'}" WidthRequest="50" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding nome_usuario}" WidthRequest="100" HeightRequest="20"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                </Frame>
+                    <!--RELATÓRIO DAS ULTIMAS 5 SAIDAS CORRETO-->
+                    <Frame BorderColor="LightSteelBlue"
+                        CornerRadius="5"
+                        Padding="8"
+                        Visual="Material">
+                        <StackLayout>
+                            <Label Text="Últimas 5 Saidas"/>
+                            <BoxView Color="LightSteelBlue"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                            <ListView x:Name="ltvSaidas" HeightRequest="230">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout>
+                                                    <Label Text="{Binding nome_produto}" WidthRequest="120" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding quantidade}" WidthRequest="20" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding data, StringFormat='{0:dd/MM/yy}'}" WidthRequest="70" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding horario, StringFormat='{}{0:hh\\:mm}'}" WidthRequest="50" HeightRequest="20"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding nome_usuario}" WidthRequest="100" HeightRequest="20"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                    <!--RELATORIO - 4 PRODUTOS COM MAIS ITENS EM ESTOQUE-->
                 <Frame BorderColor="LightSteelBlue"
                         CornerRadius="5"
                         Padding="8"
                         Visual="Material">
                     <StackLayout>
-                        <Label Text="Últimas 5 entradas"/>
+                        <Label Text="4 Produtos com mais itens em estoque"/>
                         <BoxView Color="LightSteelBlue"
-                                HeightRequest="2"
-                                HorizontalOptions="Fill" />
-                        <forms:ChartView x:Name="entradas"/>
+                                 HeightRequest="2"
+                                 HorizontalOptions="Fill" />
+                        <forms:ChartView x:Name="TopProduto"/>
                     </StackLayout>
                 </Frame>
-                <!--RELATORIO DE SAIDA-->
+                <!--RELATORIO 4 PRODUTOS COM MENOS ITEM EM ESTOQUE -->
                 <Frame BorderColor="LightSteelBlue"
                         CornerRadius="5"
                         Padding="8"
                         Visual="Material">
                     <StackLayout>
-                        <Label Text="Últimas 5 Saidas"/>
+                        <Label Text="4 Produtos com mais itens em estoque"/>
                         <BoxView Color="LightSteelBlue"
                                 HeightRequest="2"
                                 HorizontalOptions="Fill" />
-                        <forms:ChartView x:Name="saidas"/>
+                        <forms:ChartView x:Name="MinProduto"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>
         </ScrollView>
-        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal" Padding="5">
+        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal" Padding="2">
             <StackLayout Orientation="Horizontal" >
                 <Button x:Name="btnPesquisa"
                         Text="Produtos"

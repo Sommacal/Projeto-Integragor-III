@@ -6,24 +6,26 @@
              mc:Ignorable="d"
              x:Class="Zeit.Login">
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Transparent">
-                <BoxView HeightRequest="10"/>
-                <Frame BackgroundColor="Transparent">
-                    <StackLayout Orientation="Vertical" Spacing="10">
-                        <Entry x:Name="txtCpf" Placeholder="CPF" 
+        <Grid>
+            <StackLayout>
+                <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Transparent">
+                    <BoxView HeightRequest="10"/>
+                    <Frame BackgroundColor="Transparent">
+                        <StackLayout Orientation="Vertical" Spacing="10">
+                            <Entry x:Name="txtCpf" Placeholder="CPF" 
                                  HeightRequest="40"/>
-                        <Entry x:Name="txtSenha" Placeholder="Senha" 
+                            <Entry x:Name="txtSenha" Placeholder="Senha" 
                                  HeightRequest="40" 
                                  IsPassword="True"/>
-                    </StackLayout>
-                </Frame>
-                <Button x:Name="btnLogin"
+                        </StackLayout>
+                    </Frame>
+                    <Button x:Name="btnLogin"
                         Text="Login" TextColor="White"
                         FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
                         BackgroundColor="SteelBlue"
                         Clicked="btnLogin_Clicked"/>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
