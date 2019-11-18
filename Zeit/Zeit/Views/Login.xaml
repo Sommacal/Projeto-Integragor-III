@@ -10,13 +10,16 @@
             <StackLayout>
                 <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Transparent">
                     <BoxView HeightRequest="10"/>
-                    <Frame BackgroundColor="Transparent">
+                    <Frame BackgroundColor="Transparent">                        
                         <StackLayout Orientation="Vertical" Spacing="10">
+                            <Image Source="logo.png" HeightRequest="70" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="20"/>
                             <Entry x:Name="txtCpf" Placeholder="CPF" 
-                                 HeightRequest="40"/>
+                                 HeightRequest="40"
+                                 Keyboard="Numeric"/>
                             <Entry x:Name="txtSenha" Placeholder="Senha" 
                                  HeightRequest="40" 
-                                 IsPassword="True"/>
+                                 IsPassword="True"
+                                 Keyboard="Numeric"/>
                         </StackLayout>
                     </Frame>
                     <Button x:Name="btnLogin"

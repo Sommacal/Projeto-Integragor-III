@@ -8,7 +8,7 @@
              Appearing="ContentPage_Appearing">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="btnAdd" 
-                     Text="NOVO FORNECEDOR"                    
+                     Text="NOVO DEPARTAMENTO"                    
                      Clicked="btnAdd_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

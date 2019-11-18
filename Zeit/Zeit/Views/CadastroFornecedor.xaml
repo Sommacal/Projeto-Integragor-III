@@ -10,11 +10,14 @@
             <Entry x:Name="txtNome"
                    Placeholder="Nome" />
             <Entry x:Name="txtCpnj"
-                   Placeholder="CNPJ" />
+                   Placeholder="CNPJ"
+                   Keyboard="Numeric"/>
             <Entry x:Name="txtEmail"
-                   Placeholder="Email"/>
+                   Placeholder="Email"
+                   Keyboard="Email"/>
             <Entry x:Name="txtTelefone"
-                   Placeholder="Telefone"/>
+                   Placeholder="Telefone"
+                   Keyboard="Numeric"/>
             <Entry x:Name="txtEndereco"
                    Placeholder="Endereco"/>
             <Button x:Name="btnSalvar" 

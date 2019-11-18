@@ -93,13 +93,19 @@ namespace Zeit
                 PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Retirar", "Cancelar", "Quantidade a retirar", InputType.Number);
                 if (result.Ok && !String.IsNullOrWhiteSpace(result.Text))
                 {
-                    ProdutoDAO query = new ProdutoDAO();
-                    query.retirar(produto, Convert.ToInt32(result.Text));
-                    RetiradaDAO _query = new RetiradaDAO();
-                    _query.retirada(getRetirada(produto, Convert.ToInt32(result.Text)));
-
-                    await DisplayAlert("Confirmação", "Retirada feita com sucesso", "Ok");
-                    carregaList();
+                    if(Convert.ToInt32(result.Text) < produto.quantidade){
+                        ProdutoDAO query = new ProdutoDAO();
+                        query.retirar(produto, Convert.ToInt32(result.Text));
+                        RetiradaDAO _query = new RetiradaDAO();
+                        _query.retirada(getRetirada(produto, Convert.ToInt32(result.Text)));
+                        await DisplayAlert("Confirmação", "Retirada feita com sucesso", "Ok");
+                        carregaList();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Aviso", "Não é possui efetuar a retirada\n valor solicitado é maior do que o disponível", "Ok");
+                    }
+                    
                 }
                 else if (result.Ok && string.IsNullOrWhiteSpace(result.Text))
                 {
@@ -113,7 +119,7 @@ namespace Zeit
         }
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CadastroProduto());
+            await Navigation.PushAsync(new CadastroProduto(_Cpf));
         }
         private async void btnEditar_Clicked(object sender, EventArgs e)
         {

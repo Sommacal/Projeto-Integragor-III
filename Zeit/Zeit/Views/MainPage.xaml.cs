@@ -4,6 +4,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Linq;
+using Acr.UserDialogs;
 
 namespace Zeit
 {
@@ -22,9 +23,11 @@ namespace Zeit
             BindingContext = this;
         }
         private async void ContentPage_Appearing(object sender, EventArgs e)
-        {
-           try
-            {
+        {                
+                try
+                {
+                IsLoading = true;
+                await Task.Delay(300);
                 //RELATÓRIO DAS ULTIMAS 5 ENTRADAS
                 EntradaDAO entrada = new EntradaDAO();  
                 if(entrada.GetLastFive().Count > 0)
@@ -61,12 +64,16 @@ namespace Zeit
                 totalItens.Text = $"Total de itens em estoque: {Convert.ToString(produtos.listaProduto().Sum(x => x.quantidade))}";
                 totalEntradas.Text = $"Total de Entradas: {Convert.ToString(entrada.GetAll().ToList().Count)}";
                 totalRetiradas.Text = $"Total de retiradas: {Convert.ToString(retirada.GetAll().Count)}";
-
+                isLoading = false;
                 
 
             }catch (Exception ex)
             {
                 await DisplayAlert("Erro", "Erro de banco de dados: " + ex.Message, "Ok");
+            }
+            finally
+            {
+                isLoading = false;
             }
         }   
         private async void btnDepartamento_Clicked(object sender, EventArgs e)

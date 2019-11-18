@@ -1,26 +1,40 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace Zeit
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CadastroProduto : ContentPage
     {
-        public CadastroProduto()
+        string _Cpf;
+        public CadastroProduto(string Cpf)
         {
             InitializeComponent();
             loadPicker();
             this.Title = "Cadastrar Produto";
+            _Cpf = Cpf;
         }  
         private void btnSalvar_Clicked(object sender, EventArgs e)
         {
             try
             {
+                
                 ProdutoDAO query = new ProdutoDAO();
                 query.inserir(getProduto());
                 DisplayAlert("Confirmação", "Produto Cadastrado com sucesso!", "Ok");
-                limpar();                
+                EntradaDAO _query = new EntradaDAO();
+                _query.entrada(new Entrada
+                {
+                    id_produto = query.listaProduto().OrderByDescending(x => x.id).Select(x => x.id).First(),
+                    quantidade = Convert.ToInt32(txtQuantidade.Text),
+                    data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd")),
+                    horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss")),
+                    cpf_usuario = _Cpf,
+                });
+                limpar();
+
             }
             catch (Exception ex)
             {

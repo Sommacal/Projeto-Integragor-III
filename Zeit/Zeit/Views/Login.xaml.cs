@@ -28,12 +28,12 @@ namespace Zeit
                         if (usuario.ValidarLogin(txtCpf.Text.ToString(), txtSenha.Text.ToString()))
                         {
                             
-                            using (var dialog = UserDialogs.Instance.Loading($"Bem vindo {usuario.GetByID(txtCpf.Text.ToString())}\n Estamos preparando tudo para você !", null, null, true, MaskType.Gradient))
+                            using (var dialog = UserDialogs.Instance.Loading($"Olá {usuario.GetByID(txtCpf.Text.ToString())}\n  Carregando dados...", null, null, true, MaskType.Gradient))
                             {
-                                await Task.Delay(4000);
+                                await Task.Delay(1000);
                                 Application.Current.MainPage = new NavigationPage(new MainPage(txtCpf.Text.ToString()));
-                            }
-                                                       
+                                                                
+                            }                                                       
                         }
                         else
                         {
