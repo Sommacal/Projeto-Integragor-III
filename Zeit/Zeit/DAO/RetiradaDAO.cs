@@ -11,12 +11,13 @@ namespace Zeit
             try
             {
                 Conexao connection = new Conexao();
-                NpgsqlCommand query = new NpgsqlCommand("INSERT INTO retirada (quantidade, id_produto, data, horario) values (@quantidade, @id_produto, @data, @horario)");
+                NpgsqlCommand query = new NpgsqlCommand("INSERT INTO retirada (quantidade, id_produto, data, horario, cpf_usuario) values (@quantidade, @id_produto, @data, @horario, @cpf_usuario)");
                 query.Connection = connection.Open();
                 query.Parameters.Add("quantidade", NpgsqlTypes.NpgsqlDbType.Integer).Value = retirada.quantidade;
                 query.Parameters.Add("id_produto", NpgsqlTypes.NpgsqlDbType.Integer).Value = retirada.id_produto;
                 query.Parameters.Add("data", NpgsqlTypes.NpgsqlDbType.Date).Value = retirada.data;
                 query.Parameters.Add("horario", NpgsqlTypes.NpgsqlDbType.Time).Value = retirada.horario;
+                query.Parameters.Add("cpf_usuario", NpgsqlTypes.NpgsqlDbType.Varchar).Value = retirada.cpf_usuario;
                 query.ExecuteNonQuery();
                 connection.Close();
             }catch (Exception ex)

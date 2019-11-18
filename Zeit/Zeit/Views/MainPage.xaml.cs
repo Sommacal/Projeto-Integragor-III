@@ -12,6 +12,15 @@ namespace Zeit
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
+        string _Cpf;
+        public MainPage(string Cpf)
+        {
+            InitializeComponent();
+            _Cpf = Cpf;
+            this.Title = "ZEIT";
+            IsLoading = false;
+            BindingContext = this;
+        }
         private async void ContentPage_Appearing(object sender, EventArgs e)
         {
            try
@@ -42,32 +51,25 @@ namespace Zeit
                 await DisplayAlert("Erro", "Erro de banco de dados: " + ex.Message, "Ok");
             }
         }   
-        public MainPage()
-        {
-            InitializeComponent();
-            this.Title = "ZEIT";
-            IsLoading = false;
-            BindingContext = this;
-        }
         private async void btnDepartamento_Clicked(object sender, EventArgs e)
         {
             IsLoading = true;
-            await Task.Delay(2000);
+            await Task.Delay(1500);
             await Navigation.PushAsync(new ListaDepartamento());
             IsLoading = false;
         }
         private async void btnFornecedor_Clicked(object sender, EventArgs e)
         {
             IsLoading = true;
-            await Task.Delay(2000);
+            await Task.Delay(1500);
             await Navigation.PushAsync(new ListaFornecedor());
             IsLoading = false;
         }
         private async void btnPesquisa_Clicked(object sender, EventArgs e)
         {
             IsLoading = true;
-            await Task.Delay(2000);
-            await Navigation.PushAsync(new Adicionar_Retirar());           
+            await Task.Delay(1500);
+            await Navigation.PushAsync(new Adicionar_Retirar(_Cpf));           
             IsLoading = false;
         }
 

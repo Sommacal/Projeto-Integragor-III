@@ -20,3 +20,4 @@ C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.pdb
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.csprojAssemblyReference.cache
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\EditarDepartamento.xaml.g.cs
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\ListaDepartamento.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\Login.xaml.g.cs

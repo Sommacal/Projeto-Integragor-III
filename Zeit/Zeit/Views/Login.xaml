@@ -4,12 +4,26 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Zeit.Views.Login">
+             x:Class="Zeit.Login">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Vertical" Padding="30" Spacing="40" BackgroundColor="Transparent">
+                <BoxView HeightRequest="10"/>
+                <Frame BackgroundColor="Transparent">
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Entry x:Name="txtCpf" Placeholder="CPF" 
+                                 HeightRequest="40"/>
+                        <Entry x:Name="txtSenha" Placeholder="Senha" 
+                                 HeightRequest="40" 
+                                 IsPassword="True"/>
+                    </StackLayout>
+                </Frame>
+                <Button x:Name="btnLogin"
+                        Text="Login" TextColor="White"
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"
+                        BackgroundColor="SteelBlue"
+                        Clicked="btnLogin_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -13,9 +13,11 @@ namespace Zeit
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Adicionar_Retirar : ContentPage
     {
-        public Adicionar_Retirar()
+        string _Cpf;
+        public Adicionar_Retirar(string Cpf)
         {
             InitializeComponent();
+            _Cpf = Cpf;
         }
         //EVENTO LOAD XAMARIN - CARREGANDO LIST QUANDO INICIA A PAGE
         private void ContentPage_Appearing(object sender, EventArgs e)
@@ -128,6 +130,7 @@ namespace Zeit
             entrada.id_produto = produto.id;
             entrada.data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd"));
             entrada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            entrada.cpf_usuario = _Cpf;
             return entrada;
         }
         public Retirada getRetirada(Produto produto, int quantidade)
@@ -137,6 +140,7 @@ namespace Zeit
             retirada.id_produto = produto.id;
             retirada.data = Convert.ToDateTime(DateTime.Now.Date.ToString("yyyy-MM-dd"));
             retirada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
+            retirada.cpf_usuario = _Cpf;
             return retirada;
         }
         public async void carregaList()

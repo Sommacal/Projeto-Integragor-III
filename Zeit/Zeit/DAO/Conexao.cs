@@ -5,8 +5,8 @@ namespace Zeit
 {
     class Conexao
     {
-        
 
+        //string ConnectionString = "Server=ec2-23-21-87-183.compute-1.amazonaws.com; Port=5432;User Id=xoyyblanjmmzwn;Password=c69aa0b04ad5f6876f3fedfbbc39006580f97d39ca80ba46759c5d4b3f4af7ea;Database=de4bc276dt20n7;SSL Mode=Require;TrustServerCertificate=True;";
         string ConnectionString = "Server=10.0.2.2;Port=5432;Database=estoque;User Id=postgres;Password=1234;";
 
         NpgsqlConnection connection = new NpgsqlConnection();
@@ -85,7 +85,9 @@ namespace Zeit
     id_produto integer,
 	data date,
     horario time,
-	foreign key(id_produto) references produto(id)
+    cpf_usuario varchar(15),
+	foreign key(id_produto) references produto(id),
+    foreign key(cpf_usuario) references usuario(cpf)
     );*/
 
 /*create table retirada(
@@ -94,7 +96,9 @@ namespace Zeit
     id_produto integer,
     data date,
     horario time,
-    foreign key(id_produto) references produto(id)
+    cpf_usuario varchar(15),
+    foreign key(id_produto) references produto(id),
+    foreign key(cpf_usuario) 
     );*/
 
 
@@ -109,3 +113,9 @@ limit 3*/
 from entrada join produto on entrada.id_produto = produto.id
 order by produto.nome desc limit 5;
  */
+
+/*create table usuario(
+   cpf varchar primary key not null,
+   nome varchar(30),
+   senha varchar (50)
+   );*/
