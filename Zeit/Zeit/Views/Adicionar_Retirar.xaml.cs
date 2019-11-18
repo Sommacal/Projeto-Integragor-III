@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Acr.UserDialogs;
+using Zeit.Views;
 
 namespace Zeit
 {
@@ -16,7 +17,6 @@ namespace Zeit
         {
             InitializeComponent();
         }
-
         //EVENTO LOAD XAMARIN - CARREGANDO LIST QUANDO INICIA A PAGE
         private void ContentPage_Appearing(object sender, EventArgs e)
         {
@@ -25,33 +25,39 @@ namespace Zeit
         }
 
         // LISTANDO POR NOME DIGITADO 
-        private void txtNome_TextChanged(object sender, TextChangedEventArgs e)
+        private async void txtNome_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ProdutoDAO p = new ProdutoDAO();
+            try
+            {
+                ProdutoDAO p = new ProdutoDAO();
 
-            //VERIFICA SE A LISTA ESTA VAZIA PARA NÃO DAR ERRO.
-            if (p.listaProduto(txtNome.Text.ToString()) != null)
+                //VERIFICA SE A LISTA ESTA VAZIA PARA NÃO DAR ERRO.
+                if (p.listaProduto(txtNome.Text.ToString()) != null)
+                {
+                    ltvProdutos.ItemsSource = p.listaProduto(txtNome.Text.ToString());
+                    ltvProdutos.Footer = $"Foram encontrados {p.listaProduto(txtNome.Text.ToString()).Count} produtos";//Exibe a quantidade de itens no footer do list
+                }
+                else
+                {
+                    ltvProdutos.ItemsSource = null;
+                    ltvProdutos.Footer = "Não foi encontrado nenhum produto";
+                }
+            }catch(Exception ex)
             {
-                ltvProdutos.ItemsSource = p.listaProduto(txtNome.Text.ToString());
-                ltvProdutos.Footer = $"Foram encontrados {p.listaProduto(txtNome.Text.ToString()).Count} produtos";//Exibe a quantidade de itens no footer do list
-            }
-            else
-            {
-                ltvProdutos.ItemsSource = null;
-                ltvProdutos.Footer = "Não foi encontrado nenhum produto";
+                await DisplayAlert("Erro", ex.Message, "Ok");
             }
         }
         private async void btnAdicionar_Clicked(object sender, EventArgs e)
         {
             try
             {
-                //CONVERSAO EXPLICITA - IDENTIFICAR ITEM SELECIONADO
+                //GET NO OBJETO SELECIONADO
                 var button = sender as Button;
                 var produto = (Produto)button.BindingContext;
 
                 //POUP-UP QUE PEGA O VALOR A SER ADICIONADO
                 PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Adicionar", "Cancelar", "Quantidade a inserir", InputType.Number);
-                if (result.Ok && !String.IsNullOrEmpty(result.Text))
+                if (result.Ok && !String.IsNullOrWhiteSpace(result.Text))
                 {
                     ProdutoDAO query = new ProdutoDAO();
 
@@ -62,17 +68,18 @@ namespace Zeit
                     //INCLUSAO NA TABELA DE ENTRADA DE PRODUTOS
                     _query.entrada(getEntrada(produto, Convert.ToInt32(result.Text)));
                     await DisplayAlert("Confirmação", "Adição feita com sucesso", "Ok");
+                    //ATUALIZA LIST APÓS ATUALIZAR O PRODUTO
                     carregaList();
                 }
                 //CASO USUÁRIO NÃO DIGITE NENHUM VALOR
-                else if (result.Ok && result.Text.Equals(""))
+                else if (result.Ok && string.IsNullOrWhiteSpace(result.Text))
                 {
                     await DisplayAlert("Aviso", "Digite um valor a ser inserido.", "Ok");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", "Erro de banco de dados" + ex.Message, "Ok");
+                await DisplayAlert("Erro", ex.Message, "Ok");
             }
         }
         private async void btnRetirada_Clicked(object sender, EventArgs e)
@@ -82,7 +89,7 @@ namespace Zeit
                 var button = sender as Button;
                 var produto = button.BindingContext as Produto;
                 PromptResult result = await UserDialogs.Instance.PromptAsync($"Quantidade Atual: {produto.quantidade}", $"{produto.nome}", "Retirar", "Cancelar", "Quantidade a retirar", InputType.Number);
-                if (result.Ok && !String.IsNullOrEmpty(result.Text))
+                if (result.Ok && !String.IsNullOrWhiteSpace(result.Text))
                 {
                     ProdutoDAO query = new ProdutoDAO();
                     query.retirar(produto, Convert.ToInt32(result.Text));
@@ -92,16 +99,28 @@ namespace Zeit
                     await DisplayAlert("Confirmação", "Retirada feita com sucesso", "Ok");
                     carregaList();
                 }
-                else if (result.Ok && result.Text.Equals(""))
+                else if (result.Ok && string.IsNullOrWhiteSpace(result.Text))
                 {
                     await DisplayAlert("Aviso", "Digite um valor a ser inserido.", "Ok");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Erro", "Erro de banco de dados" + ex.Message, "Ok");
+                await DisplayAlert("Erro", ex.Message, "Ok");
             }
         }
+        private async void btnAdd_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CadastroProduto());
+        }
+        private async void btnEditar_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var produto = (Produto)button.BindingContext;
+            await Navigation.PushAsync(new EditarProduto(produto.id));
+        }
+
+        #region GET ENTRADA/GET RETIRADA/ CARREGALIST
         public Entrada getEntrada(Produto produto, int quantidade)
         {
             Entrada entrada = new Entrada();
@@ -120,21 +139,26 @@ namespace Zeit
             retirada.horario = TimeSpan.Parse(DateTime.Now.ToString("HH:mm:ss"));
             return retirada;
         }
-        public void carregaList()
+        public async void carregaList()
         {
-            ProdutoDAO query = new ProdutoDAO();
-            ltvProdutos.ItemsSource = query.listaProduto();
-            ltvProdutos.Footer = $"Foram encontrados {query.listaProduto().Count} produtos";
+            try
+            {
+                ProdutoDAO query = new ProdutoDAO();
+                if (query.listaProduto() != null)
+                {
+                    ltvProdutos.ItemsSource = query.listaProduto();
+                    ltvProdutos.Footer = $"Foram encontrados {query.listaProduto().Count} produtos";
+                }
+                else
+                {
+                    ltvProdutos.Footer = "Nenhum produto cadastrado";
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", "Erro de banco de dados" + ex.Message, "Ok");
+            }
         }
-
-        private async void btnAdd_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CadastroProduto());
-        }
-
-        private void btnEditar_Clicked(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

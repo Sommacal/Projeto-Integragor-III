@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Npgsql;
 
 namespace Zeit
 {
     class Conexao
     {
+        
+
         string ConnectionString = "Server=10.0.2.2;Port=5432;Database=estoque;User Id=postgres;Password=1234;";
 
         NpgsqlConnection connection = new NpgsqlConnection();
@@ -14,30 +14,41 @@ namespace Zeit
         {
             try
             {
-               connection.ConnectionString = (ConnectionString);           
+                connection.ConnectionString = ConnectionString;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());                
+                throw new Exception("Erro de conexão: " + ex.Message);
             }
-        }    
-        public NpgsqlConnection Open (){
+        }
+        public NpgsqlConnection Open()
+        {
             try
             {
                 if (connection.State == System.Data.ConnectionState.Closed)
+                {
                     connection.Open();
-            } catch (Exception ex)
+                }
+            }
+            catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                throw new Exception("Erro ao abrir conexão: " + ex.Message);
             }
             return connection;
         }
-        public void Close(){
-            connection.Close();
-       }
+        public void Close()
+        {
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao fechar conexão: " + ex.Message);
+            }
+        }
     }
 }
-
 
 /*create table departamento(
 	id serial primary key not null,
@@ -70,7 +81,7 @@ namespace Zeit
 
 /*create table entrada(
     id serial primary key not null,
-	qtde integer,
+	quantidade integer,
     id_produto integer,
 	data date,
     horario time,
@@ -79,7 +90,7 @@ namespace Zeit
 
 /*create table retirada(
     id serial primary key not null,
-    qtde integer,
+    quantidade integer,
     id_produto integer,
     data date,
     horario time,
@@ -92,3 +103,9 @@ namespace Zeit
 from entrada join produto on id_produto = produto.id
 order by data desc
 limit 3*/
+
+/*
+ * select entrada.id, entrada.quantidade, entrada.data, entrada.horario, produto.nome
+from entrada join produto on entrada.id_produto = produto.id
+order by produto.nome desc limit 5;
+ */

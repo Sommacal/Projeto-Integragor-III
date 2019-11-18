@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Zeit.EditarFornecedor"
+             Appearing="ContentPage_Appearing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="txt" 
+                     Text="Excluir" 
+                     Clicked="btnExcluir_Clicked"/>
+        <ToolbarItem x:Name="btnExcluir"                    
+                    IconImageSource="round_delete_forever_white_18dp.png"                  
+                    Clicked="btnExcluir_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="txtNome"
+                   Placeholder="Nome" />
+            <Entry x:Name="txtCpnj"
+                   Placeholder="CNPJ" />
+            <Entry x:Name="txtEmail"
+                   Placeholder="Email"/>
+            <Entry x:Name="txtTelefone"
+                   Placeholder="Telefone"/>
+            <Entry x:Name="txtEndereco"
+                   Placeholder="Endereco"/>
+            <Button x:Name="btnSalvar" 
+                    Text="Salvar"
+                    Clicked="btnSalvar_Clicked"
+                    Visual="Material" 
+                    BackgroundColor="SteelBlue"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

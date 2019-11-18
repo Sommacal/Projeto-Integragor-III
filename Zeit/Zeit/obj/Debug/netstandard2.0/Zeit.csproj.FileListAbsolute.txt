@@ -7,6 +7,9 @@ C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\Adi
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroDepartamento.xaml.g.cs
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroFornecedor.xaml.g.cs
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\CadastroProduto.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\EditarFornecedor.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\EditarProduto.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\ListaFornecedor.xaml.g.cs
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.AssemblyInfoInputs.cache
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.AssemblyInfo.cs
@@ -15,3 +18,5 @@ C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\ref\Zeit.dll
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.pdb
 C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Zeit.csprojAssemblyReference.cache
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\EditarDepartamento.xaml.g.cs
+C:\Users\Vinicius\source\repos\Zeit\Zeit\Zeit\obj\Debug\netstandard2.0\Views\ListaDepartamento.xaml.g.cs

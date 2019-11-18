@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,8 +11,22 @@ namespace Zeit
         {
             InitializeComponent();
             this.Title = "Cadastrar Fornecedor";
+        }       
+        private void btnSalvar_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                FornecedorDAO query = new FornecedorDAO();
+                query.inserir(getFornecedor());
+                limpar();
+                DisplayAlert("Confirmação", "Fornecedor Cadastrado com sucesso!", "Ok");
+            } catch  (Exception ex)
+            {
+                DisplayAlert("Erro", ex.Message, "Ok");
+            }   
         }
 
+        #region LIMPAR/GET FORNECEDOR
         public void limpar()
         {
             txtNome.Text = "";
@@ -35,23 +44,9 @@ namespace Zeit
             f.email = txtEmail.Text.ToString();
             f.telefone = txtTelefone.Text.ToString();
             f.endereco = txtEndereco.Text.ToString();
-            
+
             return f;
         }
-        private void btnSalvar_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                FornecedorDAO query = new FornecedorDAO();
-                query.inserir(getFornecedor());
-                limpar();
-                DisplayAlert("Confirmação", "Fornecedor Cadastrado com sucesso!", "Ok");
-            } catch  (Exception ex)
-            {
-                DisplayAlert("Erro", "Erro ao cadastrar"+ ex.Message, "Ok");
-            }
-           
-
-        }
+        #endregion
     }
 }

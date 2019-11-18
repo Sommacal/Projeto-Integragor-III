@@ -5,8 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              mc:Ignorable="d"
-             x:Class="Zeit.MainPage">
-
+             x:Class="Zeit.MainPage"
+             Appearing ="ContentPage_Appearing">
+    <Grid>
     <StackLayout VerticalOptions="Start">
         <Label Visual="Material"
                        Text="Relatórios de controle" 
@@ -15,15 +16,55 @@
                        FontAttributes="Bold"
                        TextColor="SteelBlue"
                        Margin="15"/>
-        <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="SteelBlue"/>
-        <ScrollView Padding="10" Margin="10">
-            <StackLayout>               
-                <forms:ChartView x:Name="produtos"/>
-                <forms:ChartView x:Name="entradas"/>
-                <forms:ChartView x:Name="saidas"/>
-            </StackLayout>    
+            <BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" BackgroundColor="SteelBlue"/>
+            <ScrollView Padding="10" Margin="10" Orientation="Vertical">            
+            <StackLayout>
+                <!-- CONTADORES -->
+                <Frame BorderColor="LightSteelBlue"
+                        CornerRadius="5"
+                        Padding="8"
+                        Visual="Material">
+                    <StackLayout>
+                        <Label Text="Contadores"/>
+                        <BoxView Color="LightSteelBlue"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                        <Label x:Name="produtosCadastrados" FontSize="Small"/>
+                        <Label x:Name="totalItens" FontSize="Small"/>
+                        <Label x:Name="totalEntradas" FontSize="Small"/>
+                        <Label x:Name="totalRetiradas" FontSize="Small"/>
+
+                    </StackLayout>
+                </Frame>
+                <!--RELATORIO DE ENTRADAS-->
+                <Frame BorderColor="LightSteelBlue"
+                        CornerRadius="5"
+                        Padding="8"
+                        Visual="Material">
+                    <StackLayout>
+                        <Label Text="Últimas 5 entradas"/>
+                        <BoxView Color="LightSteelBlue"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                        <forms:ChartView x:Name="entradas"/>
+                    </StackLayout>
+                </Frame>
+                <!--RELATORIO DE SAIDA-->
+                <Frame BorderColor="LightSteelBlue"
+                        CornerRadius="5"
+                        Padding="8"
+                        Visual="Material">
+                    <StackLayout>
+                        <Label Text="Últimas 5 Saidas"/>
+                        <BoxView Color="LightSteelBlue"
+                                HeightRequest="2"
+                                HorizontalOptions="Fill" />
+                        <forms:ChartView x:Name="saidas"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </ScrollView>
-        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal" Padding="10">
+        <ScrollView HorizontalOptions="Fill" Orientation="Horizontal" Padding="5">
             <StackLayout Orientation="Horizontal" >
                 <Button x:Name="btnPesquisa"
                         Text="Produtos"
@@ -50,4 +91,10 @@
             </StackLayout>
         </ScrollView>
     </StackLayout>
+        <ActivityIndicator x:Name="actInd"
+                               IsRunning="{Binding IsLoading}"
+                               IsVisible="{Binding IsLoading}" 
+                               Color="SteelBlue"
+                               VerticalOptions="Center" HorizontalOptions="Center" />
+    </Grid>
 </ContentPage>

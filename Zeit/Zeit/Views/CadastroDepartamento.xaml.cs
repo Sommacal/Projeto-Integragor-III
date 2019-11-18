@@ -41,7 +41,7 @@ namespace Zeit
             }
             catch (Exception ex)
             {
-                DisplayAlert("Erro", "Erro ao cadastrar; " +ex.Message, "Ok");
+                DisplayAlert("Erro", ex.Message, "Ok");
             }
           
         }

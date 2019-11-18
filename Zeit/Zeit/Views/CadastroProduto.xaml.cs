@@ -1,10 +1,4 @@
 ﻿using System;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,17 +20,15 @@ namespace Zeit
                 ProdutoDAO query = new ProdutoDAO();
                 query.inserir(getProduto());
                 DisplayAlert("Confirmação", "Produto Cadastrado com sucesso!", "Ok");
-                limpar();
-                txtNome.Focus();
-                ckbData.IsChecked = false;
+                limpar();                
             }
             catch (Exception ex)
             {
-                DisplayAlert("Erro", "Erro ao cadastrar: "+ ex.Message, "Ok");
-            }                    
-            
+                DisplayAlert("Erro", ex.Message, "Ok");
+            }             
         }
 
+        #region GETPRODUTO /LOADPICKER /LIMPAR 
         public Produto getProduto()
         {
             var dep = (Departamento)pckDepartamento.SelectedItem;
@@ -64,10 +56,9 @@ namespace Zeit
             }
             catch (Exception ex)
             {
-                DisplayAlert("Erro", "Erro de Banco de Dados: "+ex.Message, "Ok") ;
+                DisplayAlert("Erro", ex.Message, "Ok") ;
             }
         }
-
         public void limpar()
         {
             txtNome.Text = "";
@@ -75,6 +66,9 @@ namespace Zeit
             txtQuantidade.Text = "";
             pckDepartamento.SelectedIndex = -1;
             pckFornecedor.SelectedIndex = -1;
+            txtNome.Focus();
+            ckbData.IsChecked = false;
         }
+        #endregion 
     }
 }

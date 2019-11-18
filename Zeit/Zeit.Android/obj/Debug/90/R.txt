@@ -1000,11 +1000,12 @@ int drawable notification_tile_bg 0x7f070076
 int drawable notify_panel_notification_icon_bg 0x7f070077
 int drawable round_add_black_18dp 0x7f070078
 int drawable round_create_black_18dp 0x7f070079
-int drawable round_remove_black_18dp 0x7f07007a
-int drawable roundedbg 0x7f07007b
-int drawable roundedbgdark 0x7f07007c
-int drawable tooltip_frame_dark 0x7f07007d
-int drawable tooltip_frame_light 0x7f07007e
+int drawable round_delete_forever_white_18dp 0x7f07007a
+int drawable round_remove_black_18dp 0x7f07007b
+int drawable roundedbg 0x7f07007c
+int drawable roundedbgdark 0x7f07007d
+int drawable tooltip_frame_dark 0x7f07007e
+int drawable tooltip_frame_light 0x7f07007f
 int id ALT 0x7f080000
 int id CTRL 0x7f080001
 int id FUNCTION 0x7f080002
