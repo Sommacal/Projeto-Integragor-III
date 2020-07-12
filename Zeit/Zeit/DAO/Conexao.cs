@@ -6,7 +6,7 @@ namespace Zeit
     class Conexao
     {
 
-        string ConnectionString = "Server=ec2-23-21-87-183.compute-1.amazonaws.com; Port=5432;User Id=xoyyblanjmmzwn;Password=c69aa0b04ad5f6876f3fedfbbc39006580f97d39ca80ba46759c5d4b3f4af7ea;Database=de4bc276dt20n7;SSL Mode=Require;TrustServerCertificate=True;";
+        string ConnectionString = "*"
         //string ConnectionString = "Server=10.0.2.2;Port=5432;Database=estoque;User Id=postgres;Password=1234;";
 
         NpgsqlConnection connection = new NpgsqlConnection();
